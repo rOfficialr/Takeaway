@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  application:
+#    应用名称可选
+    name: TakeAway
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://192.168.23.110:3306/takeaway?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/takeaway?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+  redis:
+#    host: 192.168.23.110  #reids的ip
+    host: 127.0.0.1  #reids的ip
+    port: 6379  #reids的端口号
+#    password: root  #reids的密码
+    database: 0  #使用的几号数据库
+  cache:  #使用SpringCache（内部使用redis技术）
+    redis:
+      time-to-live: 1800000 #缓存有效期
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+
+
+TakeAway:
+  #本机上跑的时候的路径
+  path: F:/Pho/
+  #Linux服务器跑的路径
+#  path: /usr/local/MyApp/TakeAway/image
